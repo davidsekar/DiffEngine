@@ -4,11 +4,11 @@ using System.Collections;
 
 namespace DifferenceEngine
 {
-	public class DiffList_BinaryFile : IDiffList
+	public class DiffListBinaryFile : IDiffList
 	{
-		private byte[] _byteList;
+		private readonly byte[] _byteList;
 
-		public DiffList_BinaryFile(string fileName)
+		public DiffListBinaryFile(string fileName)
 		{
 			FileStream fs = null;
 			BinaryReader br = null;
@@ -25,8 +25,8 @@ namespace DifferenceEngine
 			}
 			finally
 			{
-				if (br != null) br.Close();
-				if (fs != null) fs.Close();
+			    br?.Close();
+			    fs?.Close();
 			}
 
 		}

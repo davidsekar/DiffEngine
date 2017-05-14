@@ -87,7 +87,7 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BinaryFile.cs">
+    <Compile Include="DiffListBinaryFile.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CharData.cs">

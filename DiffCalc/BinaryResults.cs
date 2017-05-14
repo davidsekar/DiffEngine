@@ -10,7 +10,7 @@ namespace DiffCalc
 	/// <summary>
 	/// Summary description for BinaryResults.
 	/// </summary>
-	public class BinaryResults : System.Windows.Forms.Form
+	public class BinaryResults : XCoolForm.XCoolForm
 	{
 		private System.Windows.Forms.ListView listView1;
 		private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -140,6 +140,7 @@ namespace DiffCalc
 
 		private void listView1_Resize(object sender, System.EventArgs e)
 		{
+            listView1.Location = new Point(0, 45);
 			int w = Math.Max((listView1.Width - 20)/4,50);
 			foreach (ColumnHeader ch in listView1.Columns)
 			{

@@ -27,7 +27,7 @@ namespace DifferenceEngine
 
 	public class DiffList_TextFile : IDiffList
 	{
-		private const int MaxLineLength = 1024;
+		//private const int MaxLineLength = 1024;
 		private ArrayList _lines;
 
 		public DiffList_TextFile(string fileName)
@@ -40,12 +40,12 @@ namespace DifferenceEngine
 				// the file is reached.
 				while ((line = sr.ReadLine()) != null) 
 				{
-					if (line.Length > MaxLineLength)
-					{
-						throw new InvalidOperationException(
-							string.Format("File contains a line greater than {0} characters.",
-							MaxLineLength.ToString()));
-					}
+					//if (line.Length > MaxLineLength)
+					//{
+					//	throw new InvalidOperationException(
+					//		string.Format("File contains a line greater than {0} characters.",
+					//		MaxLineLength.ToString()));
+					//}
 					_lines.Add(new TextLine(line));
 				}
 			}
