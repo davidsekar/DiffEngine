@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Windows;
-using System.Windows.Media;
+﻿using System.Collections;
 using DifferenceEngine;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -124,6 +121,14 @@ namespace DiffCalWin
                 }
 
             }
+        }
+
+        private void DataGridRow_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (((DataGrid) sender).Equals(DgSource))
+                DgTarget.SelectedIndex = DgSource.SelectedIndex;
+            else
+                DgSource.SelectedIndex = DgTarget.SelectedIndex;
         }
     }
 }

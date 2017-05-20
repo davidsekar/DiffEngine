@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:DiffCalWin"
-        xmlns:controls="clr-namespace:DiffCalWin.Controls"
+        xmlns:synccontrols="clr-namespace:DiffCalWin.Controls"
         mc:Ignorable="d"
         Title="Results" Height="300" Width="300" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -17,7 +17,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid Name="DgSource" CanUserResizeColumns="False" Grid.Column="0" Grid.Row="0" AutoGenerateColumns="False">
+        <DataGrid Name="DgSource" SelectionChanged="DataGridRow_SelectionChanged" VerticalScrollBarVisibility="Hidden" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" Grid.Column="0" Grid.Row="0" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="No" Width="40" Binding="{Binding Path=Line}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Text (Source)" Width="*" Binding="{Binding Path=Text}"></DataGridTextColumn>
@@ -39,22 +39,23 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-
             </DataGrid.RowStyle>
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <Style.Triggers>
                         <Trigger Property="DataGridCell.IsSelected" Value="True">
                             <Setter Property="Background" Value="#CCDAFF" />
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="BorderThickness" Value="0"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
                 <Style TargetType="ScrollViewer">
-                    <Setter Property="controls:ScrollSynchronizer.ScrollGroup" Value="Group1" />
+                    <Setter Property="synccontrols:ScrollSynchronizer.ScrollGroup" Value="Group1" />
                 </Style>
             </DataGrid.Resources>
         </DataGrid>
-        <DataGrid Name="DgTarget" CanUserResizeColumns="False" Grid.Column="1" Grid.Row="0" AutoGenerateColumns="False">
+        <DataGrid Name="DgTarget" SelectionChanged="DataGridRow_SelectionChanged" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" Grid.Column="1" Grid.Row="0" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="No." Width="40" Binding="{Binding Path=Line}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Text (Destination)" Width="*"  Binding="{Binding Path=Text}"></DataGridTextColumn>
@@ -82,12 +83,13 @@
                     <Style.Triggers>
                         <Trigger Property="DataGridCell.IsSelected" Value="True">
                             <Setter Property="Background" Value="#CCDAFF" />
+                            <Setter Property="Foreground" Value="Black"/>
                             <Setter Property="BorderThickness" Value="0"/>
                         </Trigger>
                     </Style.Triggers>
                 </Style>
                 <Style TargetType="ScrollViewer">
-                    <Setter Property="controls:ScrollSynchronizer.ScrollGroup" Value="Group1" />
+                    <Setter Property="synccontrols:ScrollSynchronizer.ScrollGroup" Value="Group1" />
                 </Style>
             </DataGrid.Resources>
         </DataGrid>
